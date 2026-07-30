@@ -1,8 +1,9 @@
 (() => {
   'use strict';
   const apiUrl = window.APP_CONFIG?.API_URL || '';
-  const prices = { Pequeno: 62, Médio: 70, Grande: 70, 'Van Transfer': 150, 'S10 e Similares': 80, Ambulância: 320 };
+  const prices = { Pequeno: 62, Médio: 70, Grande: 70, 'Van Transfer': 150, 'S10 e Similares': 80, Ambulância: 320, Motos: 40 };
   const vehicles = [
+    ['Veículos especiais', 'Motos', 'Motos'],
     ['Veículos especiais','Van Transfer','Van Transfer'],['Veículos especiais','S10 e Similares','S10 e Similares'],['Veículos especiais','Ambulância','Ambulância'],
     ['Audi','A1','Pequeno'],['Audi','A3','Médio'],['Audi','A4','Médio'],['Audi','A5','Médio'],['Audi','Q3','Grande'],['Audi','Q5','Grande'],['Audi','Q7','Grande'],['Audi','Q8','Grande'],
     ['BMW','Série 1','Pequeno'],['BMW','Série 2','Médio'],['BMW','Série 3','Médio'],['BMW','Série 5','Médio'],['BMW','X1','Grande'],['BMW','X2','Grande'],['BMW','X3','Grande'],['BMW','X4','Grande'],['BMW','X5','Grande'],['BMW','X6','Grande'],
