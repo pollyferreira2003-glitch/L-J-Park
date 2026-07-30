@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Agendamento de lavagem de veículos da L&J Park Estacionamentos">
+  <title>Agendamento de Lavagem | L&J Park Estacionamentos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Ajuste específico do cabeçalho da página inicial */
+    .topbar {
+      gap: 24px;
+    }
+
+    .header-buttons {
+      display: flex !important;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px !important;
+      flex-wrap: wrap;
+    }
+
+    .header-buttons .admin-link {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      margin: 0 !important;
+      padding: 12px 18px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 620px) {
+      .topbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .header-buttons {
+        width: 100%;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px !important;
+      }
+
+      .header-buttons .admin-link {
+        width: 100%;
+        min-width: 0;
+        font-size: 12px !important;
+        text-align: center;
+      }
+
+      .header-buttons .admin-link::after {
+        content: none !important;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .header-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+    .discount-box {
+      grid-column: 1 / -1;
+      padding: 18px;
+      border: 1px dashed var(--white);
+      border-radius: 14px;
+      background: var(--black-3);
+    }
+
+    .discount-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .discount-note {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .discount-note.success {
+      color: #72d991;
+      font-weight: 700;
+    }
+
+    .discount-note.error {
+      color: #ff8c8c;
+      font-weight: 700;
+    }
+
+    .discount-action-field {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .discount-action-field .secondary-button {
+      min-height: 52px;
+      width: 100%;
+    }
+
+    @media (max-width: 620px) {
+      .discount-fields {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-icon">L&amp;J</div>
+
+    <div>
+      <strong>L&amp;J Park Estacionamentos</strong>
+      <span>Lava Rápido • Agendamento online</span>
+    </div>
+  </div>
+
+  <div class="header-buttons">
+    <a class="admin-link" href="produtos.html">
+      Produtos L&amp;J
+    </a>
+
+    <a class="admin-link" href="admin.html">
+      Painel administrativo
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="tire-track tire-track-one"></div>
+    <div class="tire-track tire-track-two"></div>
+
+    <div class="hero-content">
+      <span class="eyebrow">L&J Park Estacionamentos</span>
+
+      <h1>Seu carro limpo, com horário marcado.</h1>
+
+      <p>
+        Preencha os dados, escolha o local do veículo e agende sua lavagem.
+      </p>
+
+      <div class="price-list">
+        <div>
+          <span>Pequeno</span>
+          <strong>R$ 62,00</strong>
+        </div>
+
+        <div>
+          <span>Médio / Grande</span>
+          <strong>R$ 70,00</strong>
+        </div>
+
+        <div>
+          <span>Veículos especiais</span>
+          <strong>R$ 80 a R$ 320</strong>
+        </div>
+      </div>
+
+      <div class="hero-badges">
+        <span>✓ Porte automático</span>
+        <span>✓ Registro na planilha</span>
+        <span>✓ Pagamento na Bayer</span>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="card-heading">
+        <div>
+          <span class="step-label">Novo agendamento</span>
+          <h2>Dados da lavagem</h2>
+        </div>
+
+        <span class="status-dot">Online</span>
+      </div>
+
+      <form id="bookingForm" novalidate>
+        <div class="field-grid">
+          <label class="field">
+            <span>Nome e sobrenome *</span>
+            <input
+              id="nome"
+              maxlength="100"
+              required
+              placeholder="Digite seu nome completo"
+            >
+          </label>
+
+          <label class="field">
+            <span>Telefone / WhatsApp *</span>
+            <input
+              id="telefone"
+              type="tel"
+              maxlength="16"
+              required
+              placeholder="(11) 99999-9999"
+            >
+          </label>
+
+          <label class="field full-row">
+            <span>Modelo do veículo *</span>
+
+            <select id="modelo" required>
+              <option value="">Selecione o modelo</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Placa *</span>
+            <input
+              id="placa"
+              maxlength="7"
+              required
+              placeholder="ABC1D23"
+            >
+          </label>
+
+          <label class="field">
+            <span>Porte</span>
+            <input
+              id="porteDisplay"
+              readonly
+              placeholder="Automático"
+            >
+            <input id="porte" type="hidden">
+          </label>
+
+          <label class="field">
+            <span>Valor</span>
+            <input
+              id="valorDisplay"
+              readonly
+              placeholder="Automático"
+            >
+            <input id="valor" type="hidden">
+          </label>
+
+          <label class="field">
+            <span>Local do veículo *</span>
+
+            <select id="localVeiculo" required>
+              <option value="">Selecione</option>
+              <option>Carrefour</option>
+              <option>Pedrinhas</option>
+              <option>Coberto</option>
+              <option>Telhadinho</option>
+              <option>Mensageria</option>
+              <option>Frente da loja L&J</option>
+              <option>Estacionamento J</option>
+              <option>Outros</option>
+            </select>
+          </label>
+
+          <label class="field hidden" id="outroLocalField">
+            <span>Informe o local *</span>
+            <input
+              id="outroLocal"
+              maxlength="100"
+              placeholder="Digite onde o veículo está"
+            >
+          </label>
+
+          <label class="field">
+            <span>Data da lavagem *</span>
+            <input id="data" type="date" required>
+          </label>
+
+          <label class="field">
+            <span>Horário de saída *</span>
+            <input id="horarioSaida" type="time" required>
+          </label>
+
+
+          <div class="discount-box">
+            <label class="field">
+              <span>Desconto</span>
+              <select id="discountOption">
+                <option value="">Sem desconto</option>
+                <option value="apply">--- Aplicar desconto ---</option>
+              </select>
+            </label>
+
+            <div id="discountFields" class="discount-fields hidden">
+              <label class="field">
+                <span>Valor do desconto *</span>
+                <input
+                  id="discountValue"
+                  type="number"
+                  min="0.01"
+                  step="0.01"
+                  placeholder="0,00"
+                >
+              </label>
+
+              <div class="field discount-action-field">
+                <span>Autorização administrativa *</span>
+                <button
+                  id="applyDiscountButton"
+                  class="secondary-button"
+                  type="button"
+                >
+                  Aplicar desconto
+                </button>
+              </div>
+            </div>
+
+            <p id="discountStatus" class="discount-note">
+              O atendente informa o valor e, ao clicar em “Aplicar desconto”, o sistema solicita a senha administrativa.
+            </p>
+          </div>
+
+          <label class="field full-row">
+            <span>Tipo de lavagem *</span>
+
+            <select id="tipoLavagem" required>
+              <option value="">Selecione</option>
+              <option value="Lavagem Especial">Lavagem Especial</option>
+              <option value="Higienização">Higienização</option>
+              <option value="Lavagem com Cera">Lavagem com Cera</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="priceSummary" class="price-summary hidden">
+          <div>
+            <span>Veículo</span>
+            <strong id="summaryVehicle">—</strong>
+          </div>
+
+          <div class="summary-price">
+            <span>Valor</span>
+            <strong id="summaryPrice">R$ 0,00</strong>
+          </div>
+        </div>
+
+        <label class="field full-width">
+          <span>Observação</span>
+
+          <textarea
+            id="observacoes"
+            maxlength="500"
+            rows="4"
+            placeholder="Opcional"
+          ></textarea>
+        </label>
+
+        <p class="payment-note">
+          O pagamento será realizado na Bayer.
+        </p>
+
+        <button
+          class="primary-button"
+          type="submit"
+          id="submitButton"
+        >
+          <span>Confirmar lavagem</span>
+          <span>→</span>
+        </button>
+      </form>
+
+      <div id="message" class="message" role="status"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>L&J Park Estacionamentos • Lava Rápido</span>
+  <span id="year"></span>
+</footer>
+
+<script src="config.js?v=4"></script>
+<script src="script-lj-v4.js?v=4"></script>
+
+</body>
+</html>

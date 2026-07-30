@@ -1,0 +1,56 @@
+L&J PARK ESTACIONAMENTOS — VERSÃO 4
+
+ALTERAÇÕES PRINCIPAIS
+- Lavagem Especial aceita no site e no Apps Script.
+- Van Transfer: R$ 150,00.
+- S10 e Similares: R$ 80,00.
+- Ambulância: R$ 320,00.
+- Chevrolet S10 usa a categoria S10 e Similares.
+- O desconto NÃO altera o valor automaticamente.
+- O atendente informa o desconto e clica em "Aplicar desconto".
+- Nesse momento, o navegador solicita a senha administrativa.
+- A senha é validada pelo Google Apps Script.
+- Somente após a validação correta o valor final é alterado.
+- O Apps Script valida novamente a senha ao salvar o agendamento.
+- Valor original, desconto e valor final são registrados na observação.
+- Painel administrativo completo, relatórios e cadastro de produtos.
+- Página Produtos L&J carrega os produtos cadastrados na planilha.
+
+ARQUIVOS DO GITHUB
+Substitua/adicione:
+- index.html
+- script-lj-v4.js
+- style.css
+- admin.html
+- admin.js
+- produtos.html
+- config.js
+
+IMPORTANTE
+O arquivo antigo script.js ou script-lj-v3.js pode continuar no GitHub, mas o index.html V4 usa:
+script-lj-v4.js?v=4
+
+GOOGLE APPS SCRIPT
+1. Abra o projeto do Apps Script.
+2. Substitua todo o conteúdo do Code.gs pelo arquivo desta pasta.
+3. Salve.
+4. Execute prepararPlanilha uma vez e autorize.
+5. Vá em Implantar > Gerenciar implantações.
+6. Clique em Editar.
+7. Selecione Nova versão.
+8. Clique em Implantar.
+9. Confirme que o acesso está como "Qualquer pessoa".
+
+TESTE DO DESCONTO
+1. Selecione um veículo.
+2. Escolha "--- Aplicar desconto ---".
+3. Informe o valor.
+4. Clique em "Aplicar desconto".
+5. O sistema deve abrir uma caixa pedindo a senha.
+6. Com senha errada, o valor não muda.
+7. Com senha correta, o valor final é atualizado.
+
+SENHA ADMINISTRATIVA CONFIGURADA
+35721421@L&J
+
+Após enviar os arquivos ao GitHub, aguarde cerca de 1 minuto e pressione Ctrl + F5.
