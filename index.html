@@ -132,48 +132,52 @@
       color: var(--white);
     }
 
-    .vehicle-search-results {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      right: 0;
-      z-index: 100;
-      max-height: 300px;
-      overflow-y: auto;
-      border: 1px solid #bdbdbd;
-      border-radius: 12px;
-      background: #ffffff;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
-    }
+    .vehicle-search-results{
+    position:absolute;
+    top:calc(100% + 6px);
+    left:0;
+    right:0;
+    z-index:999;
+    max-height:300px;
+    overflow-y:auto;
 
-    .vehicle-search-item {
-      width: 100%;
-      padding: 13px 15px;
-      border: 0;
-      border-bottom: 1px solid #e8e8e8;
-      background: #ffffff;
-      color: #111111;
-      font: inherit;
-      text-align: left;
-      cursor: pointer;
-    }
+    background:#0d0d0d;
+    border:1px solid #3a3a3a;
+    border-radius:14px;
+    box-shadow:0 18px 45px rgba(0,0,0,.55);
+}
 
-    .vehicle-search-item:last-child {
-      border-bottom: 0;
-    }
+.vehicle-search-item{
+    width:100%;
+    padding:14px 18px;
 
-    .vehicle-search-item:hover,
-    .vehicle-search-item.active {
-      background: #eaf3ff;
-    }
+    background:#0d0d0d;
+    color:#ffffff;
 
-    .vehicle-search-empty {
-      padding: 14px;
-      background: #ffffff;
-      color: #666666;
-      font-size: 13px;
-    }
+    border:none;
+    border-bottom:1px solid #242424;
 
+    text-align:left;
+    font-size:16px;
+    cursor:pointer;
+    transition:.15s;
+}
+
+.vehicle-search-item:last-child{
+    border-bottom:none;
+}
+
+.vehicle-search-item:hover,
+.vehicle-search-item.active{
+    background:#1976ff;
+    color:#fff;
+}
+
+.vehicle-search-empty{
+    padding:15px;
+    color:#9b9b9b;
+    background:#0d0d0d;
+}
   </style>
 </head>
 
