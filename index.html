@@ -228,9 +228,15 @@
           <label class="field full-row">
             <span>Modelo do veículo *</span>
 
-            <select id="modelo" required>
-              <option value="">Selecione o modelo</option>
-            </select>
+            <input
+              id="modelo"
+              list="vehicleList"
+              autocomplete="off"
+              required
+              placeholder="Digite o nome completo do veículo"
+            >
+
+            <datalist id="vehicleList"></datalist>
           </label>
 
           <label class="field">
@@ -397,7 +403,7 @@
 </footer>
 
 <script src="config.js?v=4"></script>
-<script src="script-lj-v4.js?v=4"></script>
+<script src="script-lj-v5-pesquisa-carros.js?v=5"></script>
 
 </body>
 </html>
